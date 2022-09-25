@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% block title %}Hackster{% endblock title %}
+{% block applyactive %}active{% endblock applyactive %}}
+{% block main %}
+{% for message in messages %}
+<div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+    <strong>{{message}}</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{% endfor %}
+<section id="contact">
+    <div class="container mt-4">
+        <h1 class="display-4 text-center">
+            Be one of <span class="text-primary-color">us!</span>
+        </h1>
+    </div>
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-6 rounded bg-primary-color">
+                <h3 class="text-left text-light mx-2 mt-4">
+                    We would like you as our
+                </h3>
+                <h1 class="text-left text-light mx-2 mb-4">volunteer</h1>
+                <p class="my-4 mx-4 text-light">
+                    Just fill this form and one of us will connect to you as soon as possible with further instructions.
+                </p>
+                <div class="mx-4 my-4">
+                    <p class="text-light">
+                        <i class="fa-solid fa-location-dot mr-4"></i> Roorkee college of engineering - Campus
+                    </p>
+                    <p class="text-light">
+                        <i class="fa-solid fa-envelope mr-3"></i> <a href="mailto:info@isvr.org.in"
+                            class="text-light">hacksters@developedbysam.in</a>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6 bg-light rounded">
+                <h2 class="my-4 mx-3">How can we <span class="text-primary-color">Help you?</span></h2>
+                <form action="/apply/" method="POST">{% csrf_token %}
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col">
+                                <input type="text" class="form-control" id="fname" name="fname"
+                                    placeholder="First name">
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control" id="lname" name="lname" placeholder="Last name">
+                            </div>
+                        </div>
+                    </div>
+                    <select class="form-control form-group" name="course" id="course">
+                        <option value="----">Select Course</option>
+                        <option value="B.tech">B.Tech</option>
+                        <option value="BCA">BCA</option>
+                        <option value="Diploma">Diploma</option>
+                        <option value="B.Pharma">B.Pharma</option>
+                    </select>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="branch" name="branch" aria-describedby="emailHelp"
+                            placeholder="Enter branch for B.tech/Diploma.">
+                    </div>
+                    <select class="form-control form-group" name="year" id="year">
+                        <option value="----">Select Year</option>
+                        <option value="1st">1st</option>
+                        <option value="2nd">2nd</option>
+                        <option value="3rd">3rd</option>
+                        <option value="4th">4th</option>
+                    </select>
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp"
+                            placeholder="Enter a valid email">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="phone" name="phone" aria-describedby="emailHelp"
+                            placeholder="Enter contact number">
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn bg-primary-color text-light mb-2">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock main %}
